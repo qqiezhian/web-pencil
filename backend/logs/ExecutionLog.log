@@ -1,0 +1,27 @@
+[2018-08-13T20:21:56.367] [INFO] file - [ { username: 'Adele', password: '123456', userid: 1 },
+  { username: 'Bob', password: '123456', userid: 2 },
+  { username: 'cathy', password: '123456', userid: 3 } ]
+[2018-08-13T21:05:05.967] [INFO] file - [ { username: 'Adele', password: '123456', userid: 1 },
+  { username: 'Bob', password: '123456', userid: 2 },
+  { username: 'cathy', password: '123456', userid: 3 } ]
+[2018-08-13T21:09:35.091] [INFO] file - [ { username: 'Adele', password: '123456', userid: 1 },
+  { username: 'Bob', password: '123456', userid: 2 },
+  { username: 'cathy', password: '123456', userid: 3 } ]
+[2018-08-13T21:14:11.744] [INFO] file - [ { username: 'Adele', password: '123456', userid: 1 },
+  { username: 'Bob', password: '123456', userid: 2 },
+  { username: 'cathy', password: '123456', userid: 3 } ]
+[2018-08-13T21:24:44.101] [INFO] file - [ { username: 'Adele', password: '123456', userid: 1 },
+  { username: 'Bob', password: '123456', userid: 2 },
+  { username: 'cathy', password: '123456', userid: 3 } ]
+[2018-08-13T21:25:48.299] [INFO] file - [ { username: 'Adele', password: '123456', userid: 1 },
+  { username: 'Bob', password: '123456', userid: 2 },
+  { username: 'cathy', password: '123456', userid: 3 } ]
+[2018-08-13T21:33:20.649] [INFO] file - [ { username: 'Adele', password: '123456', userid: 1 },
+  { username: 'Bob', password: '123456', userid: 2 },
+  { username: 'cathy', password: '123456', userid: 3 } ]
+[2018-08-13T22:06:59.545] [INFO] file - [ { username: 'Adele', password: '123456', userid: 1 },
+  { username: 'Bob', password: '123456', userid: 2 },
+  { username: 'cathy', password: '123456', userid: 3 } ]
+[2018-08-13T22:08:36.532] [INFO] file - [ { username: 'Adele', password: '123456', userid: 1 },
+  { username: 'Bob', password: '123456', userid: 2 },
+  { username: 'cathy', password: '123456', userid: 3 } ]
