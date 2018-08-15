@@ -32,18 +32,17 @@ class NormalLoginForm extends React.Component {
     console.log(history);
     console.log(this.user);
 
-    fetch('http://localhost:3001/Login', {
+    fetch('http://localhost:3001/login', {
       method: 'POST',
+      credentials: 'include',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(this.user)
     })
-      .then(res => res.json())
-      .then((token) => {
-        this.user = {username:null, password:null};
-        this.context.onAuthCb(this.user, token);
+      .then(res => {
+        console.log(res.status);
         history.push('/');
       }).catch((e) => {
         this.user = {username:null, password:null};

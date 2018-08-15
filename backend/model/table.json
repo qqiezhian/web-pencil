@@ -1,0 +1,26 @@
+{
+    "UserInfo": {
+        "userId": "Number",
+        "userName": "String",
+        "passWord": "String",
+        "createTime": "Date"
+    },
+    "Question": {
+        "qId": "Number",
+        "qType": "Number",
+        "userId": "Number",
+        "createTime": "Number"
+    },
+    "Test": {
+        "qBankId": "Number",
+        "userId": "Number",
+        "qIdList": "Array",
+        "type": "String"
+    },
+    "Task": {
+        "taskId": "Number",
+        "userId": "Number",
+        "testId": "Number",
+        "status": "String"
+    }
+}
