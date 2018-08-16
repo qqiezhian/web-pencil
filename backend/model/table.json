@@ -2,25 +2,28 @@
     "UserInfo": {
         "userId": "Number",
         "userName": "String",
-        "passWord": "String",
-        "createTime": "Date"
+        "passWord": "String"
     },
     "Question": {
         "qId": "Number",
-        "qType": "Number",
         "userId": "Number",
-        "createTime": "Number"
+        "qType": "String",
+        "qTitle": "String",
+        "qAnswer": "String",
+        "qOptions": "Object"
     },
     "Test": {
-        "qBankId": "Number",
+        "testId": "Number",
         "userId": "Number",
-        "qIdList": "Array",
-        "type": "String"
+        "tType": "String",
+        "tName": "String",
+        "tCategory": "String",
+        "qIdList": "Object"
     },
     "Task": {
         "taskId": "Number",
         "userId": "Number",
         "testId": "Number",
-        "status": "String"
+        "tStatus": "String"
     }
 }
