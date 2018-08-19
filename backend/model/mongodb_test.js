@@ -2,15 +2,16 @@
 var MongoDB = require('./mongodb');
 var assert = require('assert');
 var logger = require('../utils/plog').clogger;
+var tableName = require('./const');
 
-describe('UserInfo', function() {
+describe(tableName.USER_INFO_TBL, function() {
     before(function() {
         MongoDB.connect(function(err) {
             if (err) {
                 logger.fatal('mongodb connect failed, err = ', err);
             }else 
             {
-                MongoDB.remove('UserInfo',{}, function(err, res) {
+                MongoDB.remove(tableName.USER_INFO_TBL,{}, function(err, res) {
                     if (err) throw err;
                 });
             }
@@ -21,7 +22,7 @@ describe('UserInfo', function() {
     });
     it('at first count show be zero', function(done) {
         //var userinfo = {};
-        MongoDB.count('UserInfo',{}, function(err, res) {
+        MongoDB.count(tableName.USER_INFO_TBL,{}, function(err, res) {
             if (err) {
                 throw err;
             }
@@ -31,9 +32,9 @@ describe('UserInfo', function() {
     });
     it('insert a record and query without err', function(done) {
         var user = {userId: 1, userName:'raozong', passWord:'asdfghjkl'};
-        MongoDB.save('UserInfo', user, function(err, res) {
+        MongoDB.save(tableName.USER_INFO_TBL, user, function(err, res) {
             if (err) throw err;
-            MongoDB.find('UserInfo', {userId: 1}, {}, function(err, res) {
+            MongoDB.find(tableName.USER_INFO_TBL, {userId: 1}, {}, function(err, res) {
                 assert.equal(res.length,1);
                 assert.equal(res[0].passWord, user.passWord);
                 done();
@@ -41,9 +42,9 @@ describe('UserInfo', function() {
         })
     });
     it('update a record and query without err', function(done) {
-        MongoDB.update('UserInfo', {userId: 1}, {passWord: 'zxcvbnm'}, function(err, res) {
+        MongoDB.update(tableName.USER_INFO_TBL, {userId: 1}, {passWord: 'zxcvbnm'}, function(err, res) {
             if (err) throw err;
-            MongoDB.find('UserInfo', {userId: 1}, {}, function(err, res) {
+            MongoDB.find(tableName.USER_INFO_TBL, {userId: 1}, {}, function(err, res) {
                 assert.equal(res.length,1);
                 assert.equal(res[0].passWord, 'zxcvbnm');
                 done();
@@ -51,14 +52,14 @@ describe('UserInfo', function() {
         })
     });
     it('remove a record without err', function(done) {
-        MongoDB.remove('UserInfo', {userId: 1}, function(err) {
+        MongoDB.remove(tableName.USER_INFO_TBL, {userId: 1}, function(err) {
             if (err) throw err;
             done();
         })
     });
     it('at last count show be zero', function(done) {
         //var userinfo = {};
-        MongoDB.count('UserInfo',{}, function(err, res) {
+        MongoDB.count(tableName.USER_INFO_TBL,{}, function(err, res) {
             if (err) throw err;
             assert.equal(res, 0);
             done();
@@ -66,14 +67,14 @@ describe('UserInfo', function() {
     });
 });
 
-describe('Question', function() {
+describe(tableName.QUESTION_TBL, function() {
     before(function() {
         MongoDB.connect(function(err) {
             if (err) {
                 logger.fatal('mongodb connect failed, err = ', err);
             }else 
             {
-                MongoDB.remove('Question',{}, function(err, res) {
+                MongoDB.remove(tableName.QUESTION_TBL,{}, function(err, res) {
                     if (err) throw err;
                 });
             }
@@ -83,7 +84,7 @@ describe('Question', function() {
         MongoDB.disconnect();
     });
     it('at first count show be zero', function(done) {
-        MongoDB.count('Question',{}, function(err, res) {
+        MongoDB.count(tableName.QUESTION_TBL,{}, function(err, res) {
             if (err) throw err;
             assert.equal(res, 0);
             done();
@@ -99,14 +100,14 @@ describe('Question', function() {
             {name:'C', desc: '3'},
             {name:'D', desc: '4'},
         ];
-        MongoDB.save('Question', question, function(err, res) {
+        MongoDB.save(tableName.QUESTION_TBL, question, function(err, res) {
             if (err) throw err;
             logger.info('question...', res);
             done();
         })
     });
     it('update a record and query without err', function(done) {
-        MongoDB.updateData('Question', {qId: 1}, {$addToSet:{
+        MongoDB.updateData(tableName.QUESTION_TBL, {qId: 1}, {$addToSet:{
             "qOptions":{$each:[{name:'E', desc:'5'},{name:'F', desc:'6'}]}
         }}, function(err, res) {
             if (err) throw err;
@@ -119,7 +120,7 @@ describe('Question', function() {
         })
     });
     it('remove a record without err', function(done) {
-        MongoDB.remove('Question', {qId: 1}, function(err) {
+        MongoDB.remove(tableName.QUESTION_TBL, {qId: 1}, function(err) {
             if (err) throw err;
             done();
         })
@@ -127,14 +128,14 @@ describe('Question', function() {
 });
 
 
-describe('Test', function() {
+describe(tableName.TEST_TBL, function() {
     before(function() {
         MongoDB.connect(function(err) {
             if (err) {
                 logger.fatal('mongodb connect failed, err = ', err);
             }else 
             {
-                MongoDB.remove('Test',{}, function(err, res) {
+                MongoDB.remove(tableName.TEST_TBL,{}, function(err, res) {
                     if (err) throw err;
                 });
             }
@@ -144,24 +145,24 @@ describe('Test', function() {
         MongoDB.disconnect();
     });
     it('at first count show be zero', function(done) {
-        MongoDB.count('Test',{}, function(err, res) {
+        MongoDB.count(tableName.TEST_TBL,{}, function(err, res) {
             if (err) throw err;
             assert.equal(res, 0);
             done();
         })
     });
     it('insert a record and query without err', function(done) {
-        var test = {testId:1, userId:1, tType:'test', tCategory:'math'};
+        var test = {testId:1, userId:1, tType:tableName.TEST_TBL, tCategory:'math'};
         test.qIdList = [1,2,3,4,5,6];
 
-        MongoDB.save('Test', test, function(err, res) {
+        MongoDB.save(tableName.TEST_TBL, test, function(err, res) {
             if (err) throw err;
             logger.info('test...', res);
             done();
         })
     });
     it('update a record and query without err', function(done) {
-        MongoDB.updateData('Test', {testId: 1}, {$set:{qIdList:[1,2,3,4]}}, function(err, res) {
+        MongoDB.updateData(tableName.TEST_TBL, {testId: 1}, {$set:{qIdList:[1,2,3,4]}}, function(err, res) {
             if (err) throw err;
                 assert.equal(res.qIdList.length,4);
                 logger.info('test: ', res.tName, 'question list:');
@@ -173,7 +174,7 @@ describe('Test', function() {
     });
     
     it('remove a record without err', function(done) {
-        MongoDB.remove('Test', {testId: 1}, function(err) {
+        MongoDB.remove(tableName.TEST_TBL, {testId: 1}, function(err) {
             if (err) throw err;
             done();
         })
@@ -182,14 +183,14 @@ describe('Test', function() {
 
 
 
-describe('Task', function() {
+describe(tableName.TASK_TBL, function() {
     before(function() {
         MongoDB.connect(function(err) {
             if (err) {
                 logger.fatal('mongodb connect failed, err = ', err);
             }else 
             {
-                MongoDB.remove('Task',{}, function(err, res) {
+                MongoDB.remove(tableName.TASK_TBL,{}, function(err, res) {
                     if (err) throw err;
                 });
             }
@@ -199,7 +200,7 @@ describe('Task', function() {
         MongoDB.disconnect();
     });
     it('at first count show be zero', function(done) {
-        MongoDB.count('Task',{}, function(err, res) {
+        MongoDB.count(tableName.TASK_TBL,{}, function(err, res) {
             if (err) throw err;
             assert.equal(res, 0);
             done();
@@ -208,14 +209,14 @@ describe('Task', function() {
     it('insert a record and query without err', function(done) {
         var task = {taskId:1, userId:1, testId:1, tStatus:'todo'};
 
-        MongoDB.save('Task', task, function(err, res) {
+        MongoDB.save(tableName.TASK_TBL, task, function(err, res) {
             if (err) throw err;
             logger.info('task...', res);
             done();
         })
     });
     it('update a record and query without err', function(done) {
-        MongoDB.updateData('Task', {taskId: 1}, {$set:{tStatus:'completed'}}, function(err, res) {
+        MongoDB.updateData(tableName.TASK_TBL, {taskId: 1}, {$set:{tStatus:'completed'}}, function(err, res) {
             if (err) throw err;
             logger.info(res);
             assert.equal(res.tStatus,'completed');
@@ -224,7 +225,7 @@ describe('Task', function() {
     });
     
     it('remove a record without err', function(done) {
-        MongoDB.remove('Task', {taskId: 1}, function(err) {
+        MongoDB.remove(tableName.TASK_TBL, {taskId: 1}, function(err) {
             if (err) throw err;
             done();
         })

@@ -2,7 +2,8 @@
     "UserInfo": {
         "userId": "Number",
         "userName": "String",
-        "passWord": "String"
+        "passWord": "String",
+        "active": "Boolean"
     },
     "Question": {
         "qId": "Number",
@@ -12,7 +13,7 @@
         "qAnswer": "String",
         "qOptions": "Object"
     },
-    "Test": {
+    "TestPaper": {
         "testId": "Number",
         "userId": "Number",
         "tType": "String",
@@ -20,7 +21,7 @@
         "tCategory": "String",
         "qIdList": "Object"
     },
-    "Task": {
+    "Tasks": {
         "taskId": "Number",
         "userId": "Number",
         "testId": "Number",

@@ -1,6 +1,5 @@
-module.exports = Object.freeze({
-    USER_INFO_TBL: 'UserInfo',
-    QUESTION_TBL: 'Question',
-    TEST_TBL: 'Test',
-    TASK_TBL: 'Task'
-});
+
+exports.USER_INFO_TBL = 'UserInfo';
+exports.QUESTION_TBL = 'Question';
+exports.TEST_TBL = 'TestPaper';
+exports.TASK_TBL = 'Tasks';
