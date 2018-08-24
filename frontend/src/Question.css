@@ -1,0 +1,24 @@
+@import '~antd/dist/antd.css';
+.infinite-container-1 {
+    border: 1px solid #c4bebe;
+    border-radius: 4px;
+    overflow: auto;
+    padding: 8px 24px;
+    width: 20%;
+    height: 100%;
+    display: inline-block;
+    position:relative;
+  }
+  .demo-loading-container {
+    position: absolute;
+    bottom: 40px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .head-container-1 {
+    display: inline-block;
+    position:relative;
+    margin: 16px,16px,16px,16px;
+    left:15%;
+  }

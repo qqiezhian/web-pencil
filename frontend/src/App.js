@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import logo from './logo.svg';
 import './App.css';
-import { Layout, Menu, Form } from 'antd';
+import { Layout, Menu, Form,Icon } from 'antd';
 
 import {
   Switch,
@@ -15,7 +15,7 @@ import Stuff from "./Stuff";
 import Contact from "./Contact";
 import NormalLoginForm from "./Login"
 import UserCtrl from './UserCtrl'
-
+import QuestionManger from './Question'
 
 const { Header, Content, Footer } = Layout;
 const SubMenu = Menu.SubMenu;
@@ -25,24 +25,25 @@ require('es6-promise').polyfill()
 
 const WrappedNormalLoginForm = Form.create()(NormalLoginForm);
 
-
 const AppHeader = (
   <Menu
     theme="dark"
     mode="horizontal"
     defaultSelectedKeys={['home']}
-    style={{ lineHeight: '64px' }}
+    style={{lineHeight:'64px',
+      position:'relative',
+      left:'30%'}}
   >
   <Menu.Item key="home">
-        <Link to="/" >主页</Link>
+        <Link to="/" ><Icon type="home" />主页</Link>
       </Menu.Item>
       <Menu.Item key="message">
-        <Link to="/Message" >消息</Link>
+        <Link to="/Message" ><Icon type="message" />消息</Link>
       </Menu.Item>
       <Menu.Item key="question">
-        <Link to="/Question" >题库</Link>
+        <Link to="/Question" ><Icon type="question-circle-o" />题库</Link>
       </Menu.Item>
-      <SubMenu title={<span>临时账号管理</span>}>
+      <SubMenu title={<span><Icon type="setting" />临时账号管理</span>} >
         <Menu.Item key="addAccount">
           <Link to="/ProduceAccount" >批量生成</Link>
         </Menu.Item>
@@ -50,7 +51,7 @@ const AppHeader = (
           <Link to="/DeleteAccount" >删除账号</Link>
         </Menu.Item>
       </SubMenu>
-      <SubMenu title={<span>我的账户</span>}>
+      <SubMenu title={<span><Icon type="user" />我的账户</span>}>
         <Menu.Item key="userinfo">
           <Link to="/User" >账户信息</Link>
         </Menu.Item>
@@ -66,7 +67,7 @@ const Main = () => (
       <Route exact path='/' component={Home} />
       <Route path='/Login' component={WrappedNormalLoginForm} />
       <Route path='/Message' component={Stuff} />
-      <Route path='/Question' component={Contact} />
+      <Route path='/Question' component={QuestionManger} />
       <Route path='/User' component={UserCtrl} />
     </Switch>
   </main>
@@ -91,4 +92,4 @@ class App extends Component {
   }
 }
 
-export { App, Main };
+export default App
